@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: junos_route gateway_ip"
+  exit 1
+fi
+
+ip route del 0.0.0.0/1 via "$1"
+ip route add 10.0.0.0/8 via "$1"
+ip route add 172.16.0.0/12 via "$1"
+ip route add 192.168.0.0/16 via "$1"
