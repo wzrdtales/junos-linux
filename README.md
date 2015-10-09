@@ -7,10 +7,14 @@ The junos_route tool is a little helper, that helps you if the routes are not
 optimal. Most of the time you just want the private network ips to be mapped,
 but not the public ones.
 
+# Examples
+
+
+
 # Sources
 
-Thanks to the authors of the following articles, which helped me to figure out, how
-to run the Junos VPN on linux!
+Thanks to the authors of the following articles, which helped me to figure out,
+how to run the Junos VPN on linux!
 
 http://makefile.com/.plan/2009/10/juniper-vpn-64-bit-linux-an-unsolved-mystery/
 
