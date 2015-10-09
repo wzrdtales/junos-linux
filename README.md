@@ -1,15 +1,29 @@
 # Junos (Juniper) VPN for GNU/Linux (Debian/Ubuntu...)
 
-This is a helper script to install the commands junos_start and junos_route
+This is a helper script to install the commands `junos_start` and `junos_route`
 into your System. These are wrappers to establish a connection to a Junos VPN.
 
-The junos_route tool is a little helper, that helps you if the routes are not
+The `junos_route` script is a little helper, that helps you if the routes are not
 optimal. Most of the time you just want the private network ips to be mapped,
 but not the public ones.
 
+The `junos_create` script is a convenience helper, that creates a shortcut
+command like `junos_at_home`, which can be used instead of junos_route.
+
 # Examples
 
+To setup an optimal routing via `junos_route` you first need the gateway of
+your VPN and of your router. For this first connect to the VPN and call
+`ip r` next. You will find them there now. The device you need to enter is the
+device which holds the gateway of your router. You might be connected to for
+example `eth0` or `wlan0`.
 
+If you want to create a shortcut for one of your connections you're using
+regularly, then you need to execute `junos_create`, like in this example:
+
+    junos_create home 10.199.12.98 192.168.0.1 wlan0
+
+This creates a new shortcut `junos_at_home` which you can use from now on.
 
 # Sources
 

@@ -45,17 +45,6 @@ if [ ! -f corp_junos.crt ]; then
   ./getx509certificate.sh "$1" "corp_junos.crt"
 fi
 
-if [ ! -z "$2" ]; then
-  echo "#!/bin/bash
-
-echo \"Replacing gateway $1\"
-
-ip route del 0.0.0.0/1 via \"$1\"
-ip route add 10.0.0.0/8 via \"$1\"
-ip route add 172.16.0.0/12 via \"$1\"
-ip route add 192.168.0.0/16 via \"$1\"" > junos_route
-fi
-
 chmod +x junos_route
 sudo chown root:root ncui ncdiag ncsvc junos_route
 sudo chmod 4755 ncui ncdiag ncsvc junos_route

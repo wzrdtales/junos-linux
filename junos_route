@@ -5,6 +5,8 @@ if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
   exit 1
 fi
 
+echo "Replacing gateway $1 with $2 on dev $3"
+
 sudo ip r add default via "$2" dev "$3" proto static metric 0
 sudo ip route add 10.0.0.0/8 via "$1" metric 450
 sudo ip route add 172.16.0.0/12 via "$1" metric 450

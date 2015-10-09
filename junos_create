@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ]; then
+  echo "Usage: junos_create location_name vpn_gateway your_gateway device"
+  exit 1
+fi
+
+echo "#!/bin/bash
+
+echo \"Replacing gateway $2 with $3 on dev $4\"
+
+sudo ip r add default via $3 dev $4 proto static metric 0
+sudo ip route add 10.0.0.0/8 via $2 metric 450
+sudo ip route add 172.16.0.0/12 via $2 metric 450
+sudo ip route add 192.168.0.0/16 via $2 metric 450
+" > /usr/local/sbin/junos_$1
