@@ -27,7 +27,7 @@ sudo apt-get install git gcc-multilib unzip curl -y
 
 mkdir -p ~/.juniper_networks/network_connect
 
-cp ncLinuxApp.jar junos_route ~/.juniper_networks/network_connect
+cp ncLinuxApp.jar junos_route junos_create ~/.juniper_networks/network_connect
 cd ~/.juniper_networks/network_connect
 git clone https://github.com/russdill/juniper-vpn-py.git
 mv juniper-vpn-py/* .
@@ -45,11 +45,11 @@ if [ ! -f corp_junos.crt ]; then
   ./getx509certificate.sh "$1" "corp_junos.crt"
 fi
 
-chmod +x junos_route
-sudo chown root:root ncui ncdiag ncsvc junos_route
-sudo chmod 4755 ncui ncdiag ncsvc junos_route
-sudo cp junos_route /usr/local/sbin/
-sudo rm junos_route
+chmod +x junos_route junos_create
+sudo chown root:root ncui junos_create ncdiag ncsvc junos_route
+sudo chmod 4755 ncui junos_create ncdiag ncsvc junos_route
+sudo cp junos_route junos_create /usr/local/sbin/
+sudo rm junos_route junos_create
 
 echo "#!/bin/bash
 
